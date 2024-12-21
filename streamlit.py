@@ -76,16 +76,16 @@ def predict_heart_disease():
         # Make prediction request to FastAPI backend
         try:
             response = requests.post(f"{API_URL}/predict", json=inputs)
-            if response.status_code == 200:
-                prediction_message = response.json()['Prediction']
-                
-                # Display the prediction
-                st.subheader('Prediction')
-                st.write(prediction_message)
-            else:
-                st.error(f"Error: Received status code {response.status_code} from API")
+            response.raise_for_status()  # Raises an HTTPError for bad responses
+            prediction_message = response.json()['Prediction']
+            st.subheader('Prediction')
+            st.write(prediction_message)
         except requests.exceptions.RequestException as e:
             st.error(f"Error connecting to the API: {e}")
+        except json.JSONDecodeError:
+            st.error("Error decoding the API response")
+        except KeyError:
+            st.error("Unexpected response format from the API")
 
 # Run the app
 if __name__ == '__main__':
