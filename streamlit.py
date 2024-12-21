@@ -4,7 +4,7 @@ import requests
 import json
 
 # Define the URL of your FastAPI backend
-API_URL = "http://http://146.190.78.32:8080"  # Replace with your actual Render URL
+API_URL = "http://146.190.78.32:8080"  # Replace with your actual Render URL
 
 def predict_heart_disease():
     # Collect user inputs
