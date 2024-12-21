@@ -34,7 +34,6 @@ def predict_heart_disease():
         'White only. Non-Hispanic', 'Hispanic', 
         'Black only. Non-Hispanic', 'Other race only. Non-Hispanic'
     ])
-    
     inputs['GeneralHealth'] = st.sidebar.selectbox('General Health', ['Good', 'Very good', 'Fair', 'Excellent', 'Poor'])
     
     inputs['LastCheckupTime'] = st.sidebar.selectbox('Last Checkup Time', [
@@ -43,7 +42,7 @@ def predict_heart_disease():
         'Within past year (anytime less than two years ago)',
         '5 or more years ago'
     ])
-    
+    inputs['BMI_category'] = st.sidebar.selectbox('BMI_category', ['Underweight', 'Normal', 'Overweight', 'Obese'])
     inputs['SmokerStatus'] = st.sidebar.selectbox('Smoker Status', [
         'Never smoked',
         'Former smoker',
