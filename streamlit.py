@@ -75,7 +75,7 @@ def predict_heart_disease():
         
         # Make prediction request to FastAPI backend
         try:
-            response = requests.post(API_URL + "/predict", data=input_data, headers={'Content-Type': 'application/json'})
+            response = requests.post(f"{API_URL}/predict", json=inputs)
             if response.status_code == 200:
                 prediction_message = response.json()['Prediction']
                 
