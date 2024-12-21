@@ -13,12 +13,12 @@ def predict_heart_disease():
     st.sidebar.header('User Input Features')
 
     # Numerical inputs (sliders)
-    inputs['HeightInMeters'] = st.sidebar.slider('Height (meters)', 0.91, 2.41, 1.7)
-    inputs['WeightInKilograms'] = st.sidebar.slider('Weight (kg)', 30.39, 263.08, 84.46)
-    inputs['BMI'] = st.sidebar.slider('BMI', 12.11, 97.65, 28.93)
-    inputs['PhysicalHealthDays'] = st.sidebar.slider('Physical Health Days', 0, 30, 6)
-    inputs['MentalHealthDays'] = st.sidebar.slider('Mental Health Days', 0, 30, 5)
-    inputs['SleepHours'] = st.sidebar.slider('Sleep Hours', 1, 24, 7)
+    inputs['HeightInMeters'] = st.sidebar.slider('Height (meters)', 0.91, 2.41, 1.75)
+    inputs['WeightInKilograms'] = st.sidebar.slider('Weight (kg)', 30.39, 263.08, 70.5)
+    inputs['BMI'] = st.sidebar.slider('BMI', 12.11, 97.65, 23.0)
+    inputs['PhysicalHealthDays'] = st.sidebar.slider('Physical Health Days', 0, 30, 2)
+    inputs['MentalHealthDays'] = st.sidebar.slider('Mental Health Days', 0, 30, 1)
+    inputs['SleepHours'] = st.sidebar.slider('Sleep Hours', 1, 24, 7.5)
 
     # Categorical inputs (dropdowns)
     inputs['AgeCategory'] = st.sidebar.selectbox('Age Category', [
@@ -27,22 +27,22 @@ def predict_heart_disease():
         'Age 50 to 54', 'Age 45 to 49', 'Age 40 to 44',
         'Age 35 to 39', 'Age 30 to 34', 'Age 25 to 29',
         'Age 18 to 24'
-    ])
+    ], index=9)  # Default to 'Age 30 to 34'
     
     inputs['Sex'] = st.sidebar.selectbox('Sex', ['Male', 'Female'])
     inputs['RaceEthnicityCategory'] = st.sidebar.selectbox('Race/Ethnicity', [
-        'White only. Non-Hispanic', 'Hispanic', 
-        'Black only. Non-Hispanic', 'Other race only. Non-Hispanic'
+        'White only, Non-Hispanic', 'Hispanic', 
+        'Black only, Non-Hispanic', 'Other race only, Non-Hispanic'
     ])
-    inputs['GeneralHealth'] = st.sidebar.selectbox('General Health', ['Good', 'Very good', 'Fair', 'Excellent', 'Poor'])
+    inputs['GeneralHealth'] = st.sidebar.selectbox('General Health', ['Good', 'Very good', 'Fair', 'Excellent', 'Poor'], index=1)
     
     inputs['LastCheckupTime'] = st.sidebar.selectbox('Last Checkup Time', [
         'Within past year (anytime less than 12 months ago)', 
-        'Within past year (anytime less than a year ago)',
-        'Within past year (anytime less than two years ago)',
+        'Within past 2 years (1 year but less than 2 years ago)',
+        'Within past 5 years (2 years but less than 5 years ago)',
         '5 or more years ago'
     ])
-    inputs['BMI_category'] = st.sidebar.selectbox('BMI_category', ['Underweight', 'Normal', 'Overweight', 'Obese'])
+    inputs['BMI_category'] = st.sidebar.selectbox('BMI_category', ['Underweight', 'Normal', 'Overweight', 'Obese'], index=1)
     inputs['SmokerStatus'] = st.sidebar.selectbox('Smoker Status', [
         'Never smoked',
         'Former smoker',
@@ -62,7 +62,13 @@ def predict_heart_disease():
                     'HadAsthma', 'HadSkinCancer', 
                     'HadCOPD', 'HadDepressiveDisorder',
                     'HadKidneyDisease', 'HadArthritis',
-                    'HadDiabetes']
+                    'HadDiabetes', 'DeafOrHardOfHearing',
+                    'BlindOrVisionDifficulty', 'DifficultyConcentrating',
+                    'DifficultyWalking', 'DifficultyDressingBathing',
+                    'DifficultyErrands', 'ChestScan',
+                    'HIVTesting', 'FluVaxLast12',
+                    'PneumoVaxEver', 'HighRiskLastYear',
+                    'CovidPos']
 
     for var in boolean_vars:
         inputs[var] = st.sidebar.radio(var, ['True', 'False']) == 'True'
