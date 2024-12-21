@@ -18,7 +18,7 @@ def predict_heart_disease():
     inputs['BMI'] = st.sidebar.slider('BMI', 12.11, 97.65, 23.0)
     inputs['PhysicalHealthDays'] = st.sidebar.slider('Physical Health Days', 0, 30, 2)
     inputs['MentalHealthDays'] = st.sidebar.slider('Mental Health Days', 0, 30, 1)
-    inputs['SleepHours'] = st.sidebar.slider('Sleep Hours', 1, 24, 7.5)
+    inputs['SleepHours'] = st.sidebar.slider('Sleep Hours', 1, 24, 7)
 
     # Categorical inputs (dropdowns)
     inputs['AgeCategory'] = st.sidebar.selectbox('Age Category', [
